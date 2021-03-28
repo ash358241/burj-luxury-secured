@@ -28,7 +28,7 @@ client.connect(err => {
 //   console.log('db connected successfully');
 //   client.close();
 app.post('/addBooking', (req, res) => {
-    const newBooking = req.body;
+    const newBooking = req.body;    
     bookings.insertOne(newBooking)
     .then(result => {
         res.send(result.insertedCount > 0);
@@ -76,4 +76,4 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-app.listen(port)
+app.listen(process.env.PORT || port)
